@@ -14,7 +14,101 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      organizations: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          email: string | null
+          established: number | null
+          id: string
+          location: string
+          logo_url: string | null
+          name: string
+          programs: string[] | null
+          tags: string[] | null
+          target_audience: string[] | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          email?: string | null
+          established?: number | null
+          id?: string
+          location: string
+          logo_url?: string | null
+          name: string
+          programs?: string[] | null
+          tags?: string[] | null
+          target_audience?: string[] | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          email?: string | null
+          established?: number | null
+          id?: string
+          location?: string
+          logo_url?: string | null
+          name?: string
+          programs?: string[] | null
+          tags?: string[] | null
+          target_audience?: string[] | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      updates: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          is_featured: boolean | null
+          organization_id: string | null
+          organization_name: string | null
+          published_date: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          is_featured?: boolean | null
+          organization_id?: string | null
+          organization_name?: string | null
+          published_date?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          is_featured?: boolean | null
+          organization_id?: string | null
+          organization_name?: string | null
+          published_date?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "updates_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

@@ -1,6 +1,7 @@
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   searchQuery: string;
@@ -33,7 +34,17 @@ export const Header = ({ searchQuery, onSearchChange }: HeaderProps) => {
         </div>
 
         <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="sm" className="hidden md:flex">
+          <Link to="/updates">
+            <Button variant="ghost" size="sm">
+              Updates
+            </Button>
+          </Link>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="hidden md:flex"
+            onClick={() => window.open('https://forms.gle/p44D3S4YohJ8L7m19', '_blank')}
+          >
             Add Organization
           </Button>
           <Button variant="default" size="sm">
